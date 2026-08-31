@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Наши социальные сети — Gurman (Душевная кухня)</title>
 </head>
-<body>
+<body style="margin:0; padding:0; overflow-x:hidden;">
 
 <center>
     <br><br>
@@ -44,9 +44,19 @@
 
     <br><br>
 
-    <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
-    <button id="ruBtn" onclick="setLanguage('ru')"><b>RU</b></button>
-    <button id="kzBtn" onclick="setLanguage('kz')">KZ</button>
+    <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА С АНИМАЦИЕЙ -->
+    <button id="ruBtn" onclick="setLanguage('ru')" 
+            style="transition: transform 0.2s, background-color 0.2s; cursor: pointer;"
+            onmouseover="this.style.transform='scale(1.15)';" 
+            onmouseout="this.style.transform='scale(1)';" >
+        <b>RU</b>
+    </button>
+    <button id="kzBtn" onclick="setLanguage('kz')" 
+            style="transition: transform 0.2s, background-color 0.2s; cursor: pointer;"
+            onmouseover="this.style.transform='scale(1.15)';" 
+            onmouseout="this.style.transform='scale(1)';" >
+        KZ
+    </button>
 
     <br><br>
 
@@ -60,11 +70,14 @@
     <hr width="50%">
     <br>
 
-    <!-- КНОПКИ СОЦСЕТЕЙ -->
+    <!-- КНОПКИ СОЦСЕТЕЙ С АНИМАЦИЕЙ -->
     <table border="1" cellpadding="15" cellspacing="0">
         <tr>
-            <td align="center" valign="middle">
-                <a href="https://www.instagram.com/kafe.gurman_talgar" target="_blank">
+            <td align="center" valign="middle" 
+                style="transition: transform 0.2s, background-color 0.2s;"
+                onmouseover="this.style.transform='scale(1.1)'; this.style.backgroundColor='#fff8e7';"
+                onmouseout="this.style.transform='scale(1)'; this.style.backgroundColor='transparent';">
+                <a href="https://www.instagram.com/kafe.gurman_talgar" target="_blank" style="text-decoration: none; color: inherit;">
                     <svg width="36" height="36" viewBox="0 0 24 24">
                         <defs>
                             <linearGradient id="instagramGradient" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -81,8 +94,11 @@
                     <b id="instagramText">Instagram</b>
                 </a>
             </td>
-            <td align="center" valign="middle">
-                <a href="https://2gis.kz/almaty/search/%D0%93%D1%83%D1%80%D0%BC%D0%B0%D0%BD/firm/70000001116317541/77.246969%2C43.310402/tab/reviews?m=77.246969%2C43.310402%2F17.06" target="_blank">
+            <td align="center" valign="middle" 
+                style="transition: transform 0.2s, background-color 0.2s;"
+                onmouseover="this.style.transform='scale(1.1)'; this.style.backgroundColor='#eafaf1';"
+                onmouseout="this.style.transform='scale(1)'; this.style.backgroundColor='transparent';">
+                <a href="https://2gis.kz/almaty/search/%D0%93%D1%83%D1%80%D0%BC%D0%B0%D0%BD/firm/70000001116317541/77.246969%2C43.310402/tab/reviews?m=77.246969%2C43.310402%2F17.06" target="_blank" style="text-decoration: none; color: inherit;">
                     <svg width="36" height="36" viewBox="0 0 24 24">
                         <path fill="#00a651" d="M12 2C7.58 2 4 5.58 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.42-3.58-8-8-8zm0 11.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4z"/>
                     </svg>
