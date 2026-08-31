@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Наши социальные сети — Gurman (Душевная кухня)</title>
+<style>
+/* ===============================
+   ОСНОВА (Деловой стиль / Мягкий желтый)
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2c251e;
+    
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(245, 215, 110, 0.25), transparent 45%),
+        radial-gradient(circle at 80% 80%, rgba(212, 160, 23, 0.18), transparent 50%),
+        linear-gradient(135deg, #fdfbf7 0%, #f9f3e5 50%, #f3e5c8 100%);
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(180, 135, 30, 0.08) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ===============================
+   ФОНОВЫЕ ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ
+================================ */
+.bg-circle {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(190, 145, 35, 0.15);
+    right: -200px;
+    top: -200px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bg-circle::after {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    border: 1px dashed rgba(190, 145, 35, 0.2);
+    top: 75px;
+    left: 75px;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(230, 185, 80, 0.15);
+    filter: blur(120px);
+    left: -150px;
+    bottom: -150px;
+    z-index: 0;
+}
+
+/* ===============================
+   КАРТОЧКА
+================================ */
+.card {
+    position: relative;
+    z-index: 10;
+    width: 92%;
+    max-width: 620px;
+    padding: 48px 40px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 24px;
+    border: 1px solid rgba(212, 160, 23, 0.25);
+    box-shadow: 
+        0 20px 50px rgba(70, 50, 10, 0.08),
+        0 2px 10px rgba(212, 160, 23, 0.05);
+    animation: appear 0.8s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #d4a017, #f3c649, #d4a017, transparent);
+    border-radius: 10px;
+}
+
+/* ===============================
+   ВЕКТОРНЫЙ ЛОГОТИП (ЖЕЛТЫЙ ФОН + НОЖИ)
+================================ */
+.logo-wrapper {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.logo-wrapper:hover {
+    transform: scale(1.04);
+}
+
+.logo-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+}
+
+/* ===============================
+   ЯЗЫК
+================================ */
+.language {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.language button {
+    border: 1px solid rgba(212, 160, 23, 0.3);
+    background: #fcf8f0;
+    color: #8a6300;
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+}
+
+.language button.active {
+    background: #2c251e;
+    color: #f3c649;
+    border-color: #2c251e;
+    box-shadow: 0 4px 12px rgba(44, 37, 30, 0.15);
+}
+
+.language button:hover:not(.active) {
+    background: #f3e5c8;
+    color: #5a4100;
+}
+
+/* ===============================
+   ТЕКСТЫ И ЗАГОЛОВКИ
+================================ */
+h1 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #2c251e;
+    letter-spacing: -0.5px;
+}
+
+h1 span {
+    color: #b8860b;
+}
+
+.subtitle {
+    max-width: 480px;
+    margin: 0 auto 26px;
+    color: #665a4e;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ===============================
+   РАЗДЕЛИТЕЛЬ
+================================ */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 75%;
+    margin: 0 auto 28px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.3));
+}
+
+.divider::after {
+    background: linear-gradient(90deg, rgba(184, 134, 11, 0.3), transparent);
+}
+
+.divider span {
+    color: #b8860b;
+    font-size: 14px;
+}
+
+/* ===============================
+   СОЦИАЛЬНЫЕ КНОПКИ
+================================ */
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.social {
+    position: relative;
+    width: 170px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background: #faf6ee;
+    border-radius: 18px;
+    border: 1px solid #ebdcb8;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+}
+
+.social::before {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(212, 160, 23, 0.1);
+    filter: blur(15px);
+    transition: 0.3s;
+}
+
+.social:hover::before {
+    transform: scale(1.5);
+    background: rgba(212, 160, 23, 0.2);
+}
+
+.social:hover {
+    transform: translateY(-6px);
+    border-color: #b8860b;
+    box-shadow: 0 12px 25px rgba(184, 134, 11, 0.15);
+}
+
+.social svg {
+    position: relative;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 8px;
+}
+
+.social span {
+    position: relative;
+    z-index: 2;
+    font-size: 13px;
+    font-weight: 700;
+    color: #2c251e;
+}
+
+.instagram svg {
+    fill: url(#instagramGradient);
+}
+
+.gis svg {
+    fill: #00a651;
+}
+
+/* ===============================
+   ОТЗЫВ И НИЖНИЙ БЛОК
+================================ */
+.review {
+    margin-top: 26px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: #faf6ee;
+    border: 1px solid #ebdcb8;
+    color: #5c5043;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.review strong {
+    color: #8a6300;
+}
+
+.bottom-text {
+    margin-top: 24px;
+    color: #94826f;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.bottom-text span {
+    color: #8a6300;
+    font-weight: 700;
+}
+
+/* ===============================
+   МОБИЛЬНЫЕ СТИЛИ
+================================ */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 0;
+    }
+
+    .card {
+        width: 92%;
+        padding: 36px 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .socials {
+        gap: 12px;
+    }
+
+    .social {
+        width: 135px;
+        height: 110px;
+    }
+
+    .logo-wrapper {
+        width: 115px;
+        height: 115px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-circle"></div>
+
+<div class="card">
+
+    <!-- Логотип GURMAN (Жёлтый фон + скрещённые ножи) -->
+    <div class="logo-wrapper">
+        <svg class="logo-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="bgYellowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffe366"/>
+                    <stop offset="50%" stop-color="#f5c010"/>
+                    <stop offset="100%" stop-color="#d49b00"/>
+                </linearGradient>
+                <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#7a5700" flood-opacity="0.25"/>
+                </filter>
+            </defs>
+
+            <!-- Жёлтый сочный фон карточки логотипа -->
+            <circle cx="150" cy="150" r="142" fill="url(#bgYellowGradient)" stroke="#2c210d" stroke-width="4" filter="url(#subtleShadow)"/>
+            
+            <!-- Внутренний аккуратный ободок -->
+            <circle cx="150" cy="150" r="132" fill="none" stroke="#2c210d" stroke-width="1.8" stroke-dasharray="6,4" opacity="0.65"/>
+
+            <!-- Двухножевой блок (два скрещённых ножа) -->
+            <g fill="#2c210d" stroke="#2c210d">
+                <!-- Первый нож (наклонён вправо) -->
+                <g transform="translate(150, 108) rotate(45)">
+                    <!-- Лезвие шеф-ножа -->
+                    <path d="M -2, -35 C 10, -32 14, -10 14, 0 L -2, 0 Z"/>
+                    <!-- Больстер/Переход -->
+                    <rect x="-3" y="0" width="18" height="3" rx="1"/>
+                    <!-- Рукоять -->
+                    <rect x="-1" y="3" width="14" height="26" rx="3"/>
+                </g>
+                
+                <!-- Второй нож (наклонён влево) -->
+                <g transform="translate(150, 108) rotate(-45)">
+                    <!-- Лезвие шеф-ножа -->
+                    <path d="M 2, -35 C -10, -32 -14, -10 -14, 0 L 2, 0 Z"/>
+                    <!-- Больстер/Переход -->
+                    <rect x="-15" y="0" width="18" height="3" rx="1"/>
+                    <!-- Рукоять -->
+                    <rect x="-13" y="3" width="14" height="26" rx="3"/>
+                </g>
+            </g>
+
+            <!-- Основное название бренда GURMAN -->
+            <text x="150" y="196" font-family="'Segoe UI', Roboto, 'Arial Black', sans-serif" font-size="30" font-weight="900" fill="#2c210d" text-anchor="middle" letter-spacing="4">GURMAN</text>
+
+            <!-- Подпись ДУШЕВНАЯ КУХНЯ -->
+            <text x="150" y="218" font-family="'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="800" fill="#4a3713" text-anchor="middle" letter-spacing="2.5">ДУШЕВНАЯ КУХНЯ</text>
+
+            <!-- Элемент декора: 3 звезды -->
+            <g fill="#2c210d">
+                <!-- Центральная звезда -->
+                <polygon points="150,228 152,233 158,233 153,237 155,242 150,239 145,242 147,237 142,233 148,233"/>
+                <!-- Левая звезда -->
+                <polygon points="122,228 123.5,232 128,232 124.5,235 126,239 122,236.5 118,239 119.5,235 116,232 120.5,232" opacity="0.8"/>
+                <!-- Правая звезда -->
+                <polygon points="178,228 179.5,232 184,232 180.5,235 182,239 178,236.5 174,239 175.5,235 172,232 176.5,232" opacity="0.8"/>
+            </g>
+        </svg>
+    </div>
+
+    <div class="language">
+        <button id="ruBtn" class="active" onclick="setLanguage('ru')">RU</button>
+        <button id="kzBtn" onclick="setLanguage('kz')">KZ</button>
+    </div>
+
+    <h1 id="title">Мы в <span>социальных сетях</span></h1>
+
+    <p class="subtitle" id="subtitle">
+        Следите за новинками нашего меню, акциями и специальными предложениями. 
+        Нам всегда важно ваше мнение! ❤️
+    </p>
+
+    <div class="divider">
+        <span>✦</span>
+    </div>
+
+    <div class="socials">
+        <a class="social instagram" href="https://www.instagram.com/kafe.gurman_talgar" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <defs>
+                    <linearGradient id="instagramGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#FFDC80" />
+                        <stop offset="25%" stop-color="#FCB045" />
+                        <stop offset="50%" stop-color="#F77737" />
+                        <stop offset="75%" stop-color="#E1306C" />
+                        <stop offset="100%" stop-color="#833AB4" />
+                    </linearGradient>
+                </defs>
+                <path d="
+                    M7.5 2h9
+                    A5.5 5.5 0 0 1 22 7.5v9
+                    a5.5 5.5 0 0 1-5.5 5.5h-9
+                    A5.5 5.5 0 0 1 2 16.5v-9
+                    A5.5 5.5 0 0 1 7.5 2zm0 2
+                    A3.5 3.5 0 0 0 4 7.5v9
+                    A3.5 3.5 0 0 0 7.5 20h9
+                    a3.5 3.5 0 0 0 3.5-3.5v-9
+                    A3.5 3.5 0 0 0 16.5 4h-9z
+                    M12 7a5 5 0 1 1 0 10
+                    5 5 0 0 1 0-10zm0 2
+                    a3 3 0 1 0 0 6
+                    3 3 0 0 0 0-6zm5.25-3.25
+                    a1.25 1.25 0 1 1 0 2.5
+                    1.25 1.25 0 0 1 0-2.5z
+                "/>
+            </svg>
+            <span id="instagramText">Instagram</span>
+        </a>
+
+        <a class="social gis" href="https://2gis.kz/almaty/search/%D0%93%D1%83%D1%80%D0%BC%D0%B0%D0%BD/firm/70000001116317541/77.246969%2C43.310402/tab/reviews?m=77.246969%2C43.310402%2F17.06" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <path d="
+                    M12 2
+                    C7.58 2 4 5.58 4 10
+                    c0 5.5 8 12 8 12
+                    s8-6.5 8-12
+                    c0-4.42-3.58-8-8-8zm0 11.2
+                    a3.2 3.2 0 1 1 0-6.4
+                    3.2 3.2 0 0 1 0 6.4z
+                "/>
+            </svg>
+            <span id="gisText">2GIS</span>
+        </a>
+    </div>
+
+    <div class="review">
+        ⭐ <strong id="reviewTitle">Ваше мнение важно!</strong><br>
+        <span id="reviewText">Оставьте отзыв после посещения — это помогает нам становиться лучше.</span>
+    </div>
+
+    <div class="bottom-text">
+        <span id="bottomText">Спасибо, что выбираете нас</span> ✨
+    </div>
+
+</div>
+
+<script>
+function setLanguage(language) {
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
+    const reviewTitle = document.getElementById("reviewTitle");
+    const reviewText = document.getElementById("reviewText");
+    const bottomText = document.getElementById("bottomText");
+    const ruBtn = document.getElementById("ruBtn");
+    const kzBtn = document.getElementById("kzBtn");
+
+    if (language === "kz") {
+        title.innerHTML = 'Біз <span>әлеуметтік желілердеміз</span>';
+        subtitle.innerHTML = 'Мәзіріміздің жаңалықтарын, акциялар мен арнайы ұсыныстарды бақылаңыз. Сіздің пікіріңіз біз үшін өте маңызды! ❤️';
+        reviewTitle.innerHTML = 'Сіздің пікіріңіз маңызды!';
+        reviewText.innerHTML = 'Қонақ болғаннан кейін пікір қалдырыңыз — бұл бізге одан әрі жақсаруға көмектеседі.';
+        bottomText.innerHTML = 'Бізді таңдағаныңызға рақмет';
+        kzBtn.classList.add("active");
+        ruBtn.classList.remove("active");
+    } else {
+        title.innerHTML = 'Мы в <span>социальных сетях</span>';
+        subtitle.innerHTML = 'Следите за новинками нашего меню, акциями и специальными предложениями. Нам всегда важно ваше мнение! ❤️';
+        reviewTitle.innerHTML = 'Ваше мнение важно!';
+        reviewText.innerHTML = 'Оставьте отзыв после посещения — это помогает нам становиться лучше.';
+        bottomText.innerHTML = 'Спасибо, что выбираете нас';
+        ruBtn.classList.add("active");
+        kzBtn.classList.remove("active");
+    }
+}
+</script>
+
+</body>
+</html>
