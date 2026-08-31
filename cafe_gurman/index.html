@@ -2,29 +2,39 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
 <title>Наши социальные сети — Gurman (Душевная кухня)</title>
 <style>
 /* ===============================
-   СБРОС И БЛОКИРОВКА СДВИГА ЭКРАНА
+   ЖЕСТКАЯ БЛОКИРОВКА СДВИГА И СВАЙПОВ ВБОК
 ================================ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html {
     width: 100%;
     height: 100%;
-    max-width: 100%;
-    overflow-x: hidden; /* Запрещает горизонтальный скролл и сдвиг */
+    overflow-x: hidden !important;
+    overscroll-behavior-x: none; /* Запрет "резинового" сдвига вбок */
+    touch-action: pan-y; /* Разрешает только вертикальный скролл */
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden !important;
     position: relative;
     font-family: 'Segoe UI', Roboto, Arial, sans-serif;
     background: #111111;
+    touch-action: pan-y;
+    overscroll-behavior-x: none;
 }
 
-/* Оболочка-ограничитель (как в Neosushi) */
+/* Контейнер-ограничитель */
 .wrapper {
     width: 100%;
     min-height: 100vh;
@@ -33,7 +43,8 @@ html, body {
     align-items: center;
     padding: 20px 16px;
     position: relative;
-    overflow: hidden; /* Жестко обрезает любые фоновые элементы */
+    overflow: hidden !important; /* Обрезает абсолютно всё, что выходит за границы */
+    contain: paint; /* Жесткая изоляция контекста отрисовки */
     background: 
         radial-gradient(circle at 10% 15%, rgba(245, 180, 50, 0.35), transparent 45%),
         radial-gradient(circle at 90% 85%, rgba(212, 140, 0, 0.3), transparent 45%),
@@ -41,12 +52,12 @@ html, body {
 }
 
 /* ===============================
-   ФОНОВЫЕ СВЕТЯЩИЕСЯ ПЯТНА (Не выходят за экран)
+   БЕЗОПАСНЫЕ ФОНОВЫЕ ПЯТНА (Не вылезают за края)
 ================================ */
 .bg-glow-1 {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     background: rgba(243, 198, 73, 0.45);
     filter: blur(70px);
@@ -59,13 +70,13 @@ html, body {
 
 .bg-glow-2 {
     position: absolute;
-    width: 260px;
-    height: 260px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    background: rgba(255, 120, 0, 0.2);
-    filter: blur(60px);
-    top: 10%;
-    right: -50px;
+    background: rgba(255, 120, 0, 0.25);
+    filter: blur(50px);
+    top: 5%;
+    right: 0;
     pointer-events: none;
     z-index: 1;
 }
@@ -77,11 +88,10 @@ html, body {
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 460px; /* Компактный размер как в мобильных лендингах */
-    padding: 36px 24px;
+    max-width: 440px;
+    padding: 36px 20px;
     text-align: center;
     
-    /* Эффект матового стекла */
     background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -171,7 +181,7 @@ html, body {
 }
 
 /* ===============================
-   ТЕКСТЫ
+   ТЕКСТЫ И РАЗДЕЛИТЕЛИ
 ================================ */
 h1 {
     font-size: 24px;
@@ -229,8 +239,8 @@ h1 span {
 .social {
     position: relative;
     flex: 1;
-    max-width: 170px;
-    height: 100px;
+    max-width: 160px;
+    height: 98px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -306,7 +316,6 @@ h1 span {
 <body>
 
 <div class="wrapper">
-    <!-- Фоновые свечения -->
     <div class="bg-glow-1"></div>
     <div class="bg-glow-2"></div>
 
